@@ -1,0 +1,67 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  /* border-bottom: 1px solid #000; */
+
+  height: max-content;
+}
+
+.card-title {
+  text-align: center;
+  cursor: pointer;
+}
+
+.icon {
+  margin: 10px;
+  width: 160px;
+  height: 139.5px;
+}
+
+.hidden {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center;? */
+  align-items: center;
+  padding: 5px;
+  height: 0px;
+  overflow: hidden;
+  /* display: none; */
+}
+
+.hidden h4 {
+  border-top: 1px solid black;
+  padding: 10px 0 0 0;
+  margin: 10px;
+  list-style-type: 'none';
+  text-align: 'left';
+  width: 80%;
+}
+
+.hidden li {
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.btnn {
+  margin-top: 15px;
+  background-color: black;
+  color: white;
+  width: 80%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.ssp {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}

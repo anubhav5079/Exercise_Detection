@@ -1,0 +1,123 @@
+.main {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  /* background: url("background.jpg"); */
+  width: 100vw;
+  min-height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.logo {
+  width: 10rem;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+.titlebox {
+  display: flex;
+  border: 3px solid black;
+  justify-content: center;
+  place-items: center;
+  backdrop-filter: blur(12px);
+}
+
+.titlebox > div {
+  padding: 0.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.titlebox > div:nth-child(1),
+.titlebox > div:nth-child(2) {
+  border-right: 3px solid black;
+}
+
+.select {
+  align-self: center;
+  padding: 0.5rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  border-radius: 0.2rem;
+  background: orange;
+  margin-bottom: -1rem;
+  margin-top: -1rem;
+  font-size: 1.5rem;
+}
+
+.box {
+  border: 3px solid black;
+  padding: 1rem;
+  margin: 1rem;
+  display: flex;
+  gap: 1rem;
+  backdrop-filter: blur(12px);
+  overflow: auto;
+  /* flex-wrap: wrap; */
+}
+
+.excercisebox {
+  border: 2px solid black;
+  padding: 0.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  width: min-content;
+  place-items: center;
+  /* flex-grow: 1; */
+}
+
+.boximage {
+  width: 14rem;
+  height: 10rem;
+}
+
+.name {
+  font-weight: 600;
+}
+
+.desc {
+  min-height: min-content;
+  height: 10rem;
+  overflow: auto;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.startbutton {
+  padding: 0.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  background: green;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.workout {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.winfo {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 20%;
+  border-right: 3px solid black;
+  /* justify-content: center; */
+  place-items: center;
+  z-index: 100;
+}
+
+.wcamera {
+  flex-grow: 1;
+  z-index: 2;
+}

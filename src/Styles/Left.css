@@ -1,0 +1,24 @@
+.left {
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  z-index: 5;
+  min-width: 271px;
+  height: 100vh;
+  overflow: scroll;
+  background-color: #eaeaea;
+}
+.left::-webkit-scrollbar {
+  display: none;
+}
+.top {
+  color: white;
+  /* width: 358px; */
+  /* height: 60px; */
+  position: sticky;
+  top: 0;
+  padding: 25px 25px;
+  background-color: #1f2232;
+}
