@@ -13,7 +13,7 @@ const Left = () => {
     playing,
     setStart,
     start,
-    setRep,
+    setRightCount,
     audio,
     desc,
     setSpeed,
@@ -38,20 +38,25 @@ const Left = () => {
         Go back{" "}
       </h2>
       <div className={styles.main}>
-        <div>Name: {name}</div>
-        <div>Age: {age}</div>
-        <div>Gender: {gender}</div>
-        <h4>{exerciseName} instructions:</h4>
-        <ul
-          style={{
-            listStyleType: "number",
-          }}
-        >
-          {desc.map((li) => {
-            return <li key={li}>{li}</li>;
-          })}
-        </ul>
+        <div className={styles.first}>
+          <div>Name: {name}</div>
+          <div>Age: {age}</div>
+          <div>Gender: {gender}</div>
+        </div>
+        <div className={styles.second}>
+          <h4>{exerciseName} instructions:</h4>
+          <ul
+            style={{
+              listStyleType: "number",
+            }}
+          >
+            {desc.map((li) => {
+              return <li key={li}>{li}</li>;
+            })}
+          </ul>
+        </div>
         <button
+          className={styles.start}
           onClick={() => {
             if (playing.current) {
               playing.current.pause();
@@ -59,7 +64,7 @@ const Left = () => {
             }
             if (!start) {
               playing.current = audio;
-              setRep(0);
+              setRightCount(0);
               setSpeed(0);
               setCompleted(false);
               setStart(true);

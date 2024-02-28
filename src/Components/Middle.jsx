@@ -16,7 +16,8 @@ const Middle = () => {
   const [loading, setLoading] = useState(false);
   const [allowed, setAllowed] = useState(0);
   const {
-    setRep,
+    setRightCount,
+    setLeftCount,
     setSpeed,
     start,
     completed,
@@ -77,7 +78,8 @@ const Middle = () => {
           unsubscribe = requestAnimationFrame(renderPrediction);
         }
         camera = await Camera.setupCamera(
-          setRep,
+          setLeftCount,
+          setRightCount,
           setSpeed,
           (audio) => (playing.current = audio),
           playing.current,
@@ -102,7 +104,16 @@ const Middle = () => {
       camera = null;
       cancelAnimationFrame(unsubscribe);
     };
-  }, [completed, exercise, start, playing, setCompleted, setRep, setSpeed]);
+  }, [
+    completed,
+    exercise,
+    start,
+    playing,
+    setCompleted,
+    setSpeed,
+    setRightCount,
+    setLeftCount,
+  ]);
 
   return (
     <div className="middle">

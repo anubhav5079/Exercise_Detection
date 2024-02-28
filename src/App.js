@@ -2,7 +2,6 @@ import React, { createContext, useState, useRef } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import SignUp from "./Components/SignUp";
-import bg from "./Assets/images/img.png";
 
 import Workout from "./Components/Workout";
 import SelectExcercise from "./Components/SelectExcercise";
@@ -14,7 +13,8 @@ function App() {
   const playing = useRef(null);
   const [modal, setModal] = useState(null);
   const [open, setOpen] = useState(true);
-  const [rep, setRep] = useState(0);
+  const [right_count, setRightCount] = useState(0);
+  const [wrong_count, setWrongCount] = useState(0);
   const [speed, setSpeed] = useState(0);
   const [completed, setCompleted] = useState(false);
   const [exercise, setExercise] = useState(null);
@@ -39,8 +39,10 @@ function App() {
         setStart,
         open,
         setOpen,
-        rep,
-        setRep,
+        right_count,
+        setRightCount,
+        wrong_count,
+        setWrongCount,
         speed,
         setSpeed,
         completed,
@@ -71,10 +73,7 @@ function App() {
     >
       <div className="App">
         <div className="sp">
-          <p className="hh1">
-            Open this page in a larger screen to get the best experience.
-          </p>
-          <img src={bg} alt="bg" className="bgg" />
+          <p className="hh1">Use larger interface</p>
         </div>
         <div className="hidde">
           <Router>

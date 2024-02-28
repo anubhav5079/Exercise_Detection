@@ -41,7 +41,7 @@ const data = [
     audio: new Audio(HKintro),
     aud2: new Audio(HKSCM),
     aud2len: 19600,
-    reps: 20,
+    count: 20,
   },
   {
     text: "Jumping Jacks",
@@ -54,7 +54,7 @@ const data = [
     audio: new Audio(JJIntro),
     aud2: new Audio(JJIcnt),
     aud2len: 14000,
-    reps: 25,
+    count: 25,
   },
   {
     text: "Squats",
@@ -67,7 +67,7 @@ const data = [
     audio: new Audio(SIntro),
     aud2: new Audio(SStart),
     aud2len: 25000,
-    reps: 20,
+    count: 20,
   },
   {
     text: "Lunges",
@@ -80,7 +80,7 @@ const data = [
     audio: new Audio(LIntro),
     aud2: new Audio(LStart),
     aud2len: 32000,
-    reps: 20,
+    count: 20,
   },
   {
     text: "Double Leg Bridge",
@@ -93,7 +93,7 @@ const data = [
     audio: new Audio(GBIntro),
     aud2: new Audio(GBStart),
     aud2len: 34000,
-    reps: 15,
+    count: 15,
   },
   {
     text: "Knee Extension",
@@ -106,7 +106,7 @@ const data = [
     audio: new Audio(KEIntro),
     aud2: new Audio(KEStart),
     aud2len: 15000,
-    reps: 20,
+    count: 20,
   },
   {
     text: "Straight Leg Raise",
@@ -119,47 +119,8 @@ const data = [
     audio: new Audio(LRIntro),
     aud2: new Audio(LRStart),
     aud2len: 33600,
-    reps: 15,
+    count: 15,
   },
-  // {
-  //   text: "Active hip abduction",
-  //   image: fourth,
-  //   description: [
-  //     "Lie on your back with your legs straight.",
-  //     "Slide your right leg out to the side as far as you can, .",
-  //     "Do not turn your knee.",
-  //   ],
-  //   audio: new Audio(KEIntro),
-  //   aud2: new Audio(KEStart),
-  //   aud2len: 1,
-  //   reps: 15,
-  // },
-  // {
-  //   text: "Lateral Shoulder Stretch",
-  //   image: second,
-  //   description: [
-  //     "Make sure your full body is in the camera frame",
-  //     "Face the camera",
-  //     "Start jumping jacks",
-  //   ],
-  //   audio: new Audio(JJIntro),
-  //   aud2: new Audio(JJIcnt),
-  //   aud2len: 14000,
-  //   reps: 15,
-  // },
-  // {
-  //   text: "Lunging Hip Flexor Stretch",
-  //   image: second,
-  //   description: [
-  //     "Make sure your full body is in the camera frame",
-  //     "Face the camera",
-  //     "Start jumping jacks",
-  //   ],
-  //   audio: new Audio(JJIntro),
-  //   aud2: new Audio(JJIcnt),
-  //   aud2len: 14000,
-  //   reps: 15,
-  // },
 ];
 
 export default data;

@@ -13,7 +13,7 @@ function WorkoutList() {
     setAudio,
     setDesc,
     setImage,
-    setRep,
+    setRightCount,
     setSpeed,
     setCompleted,
     setStart,
@@ -21,12 +21,12 @@ function WorkoutList() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setRep(0);
+    setRightCount(0);
     setSpeed(0);
     setCompleted(false);
     setStart(false);
     setExercise(null);
-  }, [setRep, setSpeed, setCompleted, setStart, setExercise]);
+  }, [setRightCount, setSpeed, setCompleted, setStart, setExercise]);
 
   return (
     <>
@@ -80,7 +80,6 @@ function SelectExcercise() {
   return (
     <div className={styles.main}>
       <div className={styles.header}>
-        <img className={styles.logo} src="logo.png" alt="Logo" />
         <div className={styles.titlebox}>
           <div>{name}</div>
           <div>{age}</div>

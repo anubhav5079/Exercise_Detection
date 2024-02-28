@@ -5,8 +5,14 @@ import { Context } from "../App";
 import data from "../Assets/Json/Text";
 
 const Modal2 = () => {
-  const { exercise, setStart, completed, setRep, setSpeed, setCompleted } =
-    useContext(Context);
+  const {
+    exercise,
+    setStart,
+    completed,
+    setRightCount,
+    setSpeed,
+    setCompleted,
+  } = useContext(Context);
   return (
     completed && (
       <div className="screen">
@@ -24,7 +30,7 @@ const Modal2 = () => {
               className="btn1"
               id="b8"
               onClick={() => {
-                setRep(0);
+                setRightCount(0);
                 setSpeed(0);
                 setCompleted(false);
                 setStart(false);
@@ -36,7 +42,7 @@ const Modal2 = () => {
               className="btn2"
               id="b9"
               onClick={() => {
-                setRep(0);
+                setRightCount(0);
                 setSpeed(0);
                 setCompleted(false);
                 setStart(true);

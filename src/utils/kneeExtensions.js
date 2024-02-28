@@ -1,10 +1,10 @@
-import Legs from '../Assets/Sound/knee_extensions/Knee extension_correction_extend leg fully.mp3';
-import Back from '../Assets/Sound/knee_extensions/Knee extension_correction_keep your back straight.mp3';
-import Neck from '../Assets/Sound/knee_extensions/Knee extension_correction_keep head straight.mp3';
-import Ankles from '../Assets/Sound/knee_extensions/Knee extension_correction_avoid bending ankle.mp3';
+import Legs from "../Assets/Sound/knee_extensions/Knee extension_correction_extend leg fully.mp3";
+import Back from "../Assets/Sound/knee_extensions/Knee extension_correction_keep your back straight.mp3";
+import Neck from "../Assets/Sound/knee_extensions/Knee extension_correction_keep head straight.mp3";
+import Ankles from "../Assets/Sound/knee_extensions/Knee extension_correction_avoid bending ankle.mp3";
 
-import HKMG from '../Assets/Sound/high_knees/HIGH KNEES_motivation_great.mp3';
-import HKMR from '../Assets/Sound/high_knees/HIGH KNEES_motivation_reps.mp3';
+import HKMG from "../Assets/Sound/high_knees/HIGH KNEES_motivation_great.mp3";
+import HKMR from "../Assets/Sound/high_knees/HIGH KNEES_motivation_reps.mp3";
 
 const knee_audio = new Audio(Legs);
 const back_audio = new Audio(Back);
@@ -22,7 +22,8 @@ export class Knee_Extensions {
     this.enough_knee_bending_opposite = false;
     this.enough_ankle_bending_opposite = true;
     this.again = true;
-    this.count = 0;
+    this.right_count = 0;
+    this.wrong_count = 0;
   }
 
   /*c1 is the condition for rest, c2 is the condition for ongoing exercise
@@ -97,17 +98,21 @@ export class Knee_Extensions {
                 this.enough_ankle_bending ||
                 this.enough_ankle_bending_opposite
               ) {
-                this.count += 1;
+                this.right_count += 1;
               } else {
+                this.wrong_count += 1;
                 ankle_audio.play();
               }
             } else {
+              this.wrong_count += 1;
               neck_audio.play();
             }
           } else {
+            this.wrong_count += 1;
             back_audio.play();
           }
         } else {
+          this.wrong_count += 1;
           knee_audio.play();
         }
       }
@@ -118,14 +123,20 @@ export class Knee_Extensions {
       this.again = true;
       this.enough_ankle_bending = true;
     }
-    if ((this.count === 5 || this.count === 20) && this.p1 !== this.count) {
+    if (
+      (this.right_count === 5 || this.right_count === 20) &&
+      this.p1 !== this.right_count
+    ) {
       great_audio.play();
-      this.p1 = this.count;
+      this.p1 = this.right_count;
     }
-    if (this.count === 10 && this.p2 !== this.count) {
+    if (this.right_count === 10 && this.p2 !== this.right_count) {
       last_few_audio.play();
-      this.p2 = this.count;
+      this.p2 = this.right_count;
     }
-    return this.count;
+    return {
+      right_count: this.right_count,
+      wrong_count: this.wrong_count,
+    };
   }
 }

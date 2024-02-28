@@ -31,7 +31,6 @@ function SignUp(props) {
 
   return (
     <div className={styles.main}>
-      <img className={styles.logo} src="logo.png" alt="Logo" />
       <form
         className={styles.login}
         onSubmit={(e) => {

@@ -16,8 +16,6 @@ import { Lunges } from "./lunges";
 
 import { Knee_Extensions } from "./kneeExtensions";
 
-import { Active_Hip_Abduction } from "./activeHipAbduction";
-
 import data from "../Assets/Json/Text";
 
 import {
@@ -41,6 +39,8 @@ export class Camera {
     this.width = this.video.offsetWidth;
     this.height = this.video.offsetHeight;
     this.exercise_count = 0;
+    this.right_count = 0;
+    this.wrong_count = 0;
     this.high_knee = new HighKnees();
     this.jumping_jack = new JumpingJacks();
     this.squat = new Squats();
@@ -49,14 +49,14 @@ export class Camera {
     this.lateral_shoulder_stretch = new Lateral_Shoulder_Stretch();
     this.lunging_hip_flexor_stretch = new Lunging_Hip_Flexor_Stretch();
     this.knee_extension = new Knee_Extensions();
-    this.actvie_hip_abduction = new Active_Hip_Abduction();
     this.leg_raises = new Leg_Raises();
     this.start_played = false;
     this.countdown_end = false;
   }
 
   static async setupCamera(
-    setRep,
+    setRightCount,
+    setWrongCount,
     setSpeed,
     setPlaying,
     playing,
@@ -77,7 +77,8 @@ export class Camera {
       stream = await navigator.mediaDevices.getUserMedia(videoConfig);
 
       const camera = new Camera();
-      camera.setRep = setRep;
+      camera.setRightCount = setRightCount;
+      camera.setWrongCount = setWrongCount;
       camera.setSpeed = setSpeed;
       camera.setPlaying = setPlaying;
       camera.playing = playing;
@@ -270,6 +271,7 @@ export class Camera {
   distance(a, b) {
     return Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2);
   }
+
   // validate if head to toe is in frame
   heels_valid(validator, ex) {
     try {
@@ -287,9 +289,9 @@ export class Camera {
           this.countdownAudio(ex);
         }
         if (this.countdown_end) {
-          let count = validator();
-          if (count !== this.exercise_count) {
-            this.update_values(count, ex);
+          let { right_count, wrong_count } = validator();
+          if (right_count + wrong_count !== this.exercise_count) {
+            this.update_values(right_count, wrong_count, ex);
           }
         }
         return true;
@@ -358,19 +360,23 @@ export class Camera {
     this.setAnimation(an);
   };
   //updates rep count and speed in ui
-  update_values = (count, ex) => {
-    this.exercise_count = count;
+  update_values = (right_count, wrong_count, ex) => {
+    this.exercise_count = right_count + wrong_count;
+    this.right_count = right_count;
+    this.wrong_count = wrong_count;
     let time_taken = new Date().getTime() - this.start_time;
-    this.setRep(this.exercise_count);
+    this.setRightCount(right_count);
+    this.setWrongCount(wrong_count);
     if (time_taken) {
       // console.log(time_taken, count)
-      this.setSpeed(((1000 * count) / time_taken).toFixed(2));
+      this.setSpeed(((1000 * right_count) / time_taken).toFixed(2));
     }
-    if (count === data[ex].reps) {
+    if (right_count === data[ex].count) {
       this.setCompleted(true);
       new Audio(HKEnd).play();
     }
   };
+
   // switch bw exercises
   do_exercise(exercise) {
     switch (exercise) {

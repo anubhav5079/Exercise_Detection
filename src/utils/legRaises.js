@@ -1,7 +1,7 @@
-import Legs from '../Assets/Sound/leg_raise/Straight leg raise_correction_raise leg six inches off ground.mp3';
-import Knee from '../Assets/Sound/leg_raise/Straight leg raise_correction_try not to bend leg.mp3';
-import Neck from '../Assets/Sound/leg_raise/Straight leg raise_correction_keep head straight.mp3';
-import Hand from '../Assets/Sound/leg_raise/Straight leg raise_correction_keep hands on floor.mp3';
+import Legs from "../Assets/Sound/leg_raise/Straight leg raise_correction_raise leg six inches off ground.mp3";
+import Knee from "../Assets/Sound/leg_raise/Straight leg raise_correction_try not to bend leg.mp3";
+import Neck from "../Assets/Sound/leg_raise/Straight leg raise_correction_keep head straight.mp3";
+import Hand from "../Assets/Sound/leg_raise/Straight leg raise_correction_keep hands on floor.mp3";
 const legAudio = new Audio(Legs);
 const kneeAudio = new Audio(Knee);
 const neckAudio = new Audio(Neck);
@@ -16,7 +16,8 @@ export class Leg_Raises {
     this.hand_bending = false;
     this.opp_leg_bending = false;
     this.opp_knee_bending = false;
-    this.count = 0;
+    this.right_count = 0;
+    this.wrong_count = 0;
   }
   isValid(c1, LA, KA, NA, HA, OLA, OKA) {
     if (c1) {
@@ -33,22 +34,22 @@ export class Leg_Raises {
           if (this.knee_bending && this.opp_knee_bending) {
             if (this.neck_bending) {
               if (this.hand_bending) {
-                this.count += 1;
+                this.right_count += 1;
               } else {
+                this.wrong_count += 1;
                 handAudio.play();
-                console.log('hand error');
               }
             } else {
+              this.wrong_count += 1;
               neckAudio.play();
-              console.log('neck error');
             }
           } else {
+            this.wrong_count += 1;
             kneeAudio.play();
-            console.log('knee error');
           }
         } else {
+          this.wrong_count += 1;
           legAudio.play();
-          console.log('legs Error');
         }
       }
       this.leg_bending = false;
@@ -59,6 +60,9 @@ export class Leg_Raises {
       this.opp_leg_bending = false;
       this.again = true;
     }
-    return this.count;
+    return {
+      right_count: this.right_count,
+      wrong_count: this.wrong_count,
+    };
   }
 }

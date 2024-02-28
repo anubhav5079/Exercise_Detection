@@ -22,7 +22,8 @@ export class Lateral_Shoulder_Stretch {
   constructor() {
     this.p1 = 0;
     this.p2 = 0;
-    this.count = 0;
+    this.right_count = 0;
+    this.wrong_count = 0;
     this.min = 720;
     this.again = true;
     this.straight_back = false;
@@ -36,12 +37,13 @@ export class Lateral_Shoulder_Stretch {
     straight_arm,
     knee_front_toe,
     right_knee_angle,
-    right_arm_angle
+    right_arm_angle,
   ) {
-    if (c1) { //user is doing exercise
+    if (c1) {
+      //user is doing exercise
       Knee.play();
-      if(straight_back){
-        this.straight_back=true;
+      if (straight_back) {
+        this.straight_back = true;
       }
 
       if (straight_arm) {
@@ -52,19 +54,24 @@ export class Lateral_Shoulder_Stretch {
       }
 
       this.again = false;
-    } else if (c2) { //user comes back to initial position
+    } else if (c2) {
+      //user comes back to initial position
       if (!this.again) {
         if (this.straight_back) {
           if (!this.knee_front_toe) {
             if (this.straight_arm) {
-              this.count++;  
+              this.right_count++;
             } else {
+              this.wrong_count += 1;
               Final.play(); //when arm is not straight
             }
           } else {
+            this.wrong_count += 1;
             Toe.play(); // when knee is in front of toe
           }
-        } else { //when back is not straight
+        } else {
+          //when back is not straight
+          this.wrong_count += 1;
           Back.play();
         }
       }
@@ -75,14 +82,20 @@ export class Lateral_Shoulder_Stretch {
       this.knee_front_toe = false;
     }
 
-    if ((this.count === 5 || this.count === 15) && this.p1 !== this.count) {
+    if (
+      (this.right_count === 5 || this.right_count === 15) &&
+      this.p1 !== this.right_count
+    ) {
       great_audio.play();
-      this.p1 = this.count;
+      this.p1 = this.right_count;
     }
-    if (this.count === 10 && this.p2 !== this.count) {
+    if (this.right_count === 10 && this.p2 !== this.right_count) {
       last_few_audio.play();
-      this.p2 = this.count;
+      this.p2 = this.right_count;
     }
-    return this.count;
+    return {
+      right_count: this.right_count,
+      wrong_count: this.wrong_count,
+    };
   }
 }

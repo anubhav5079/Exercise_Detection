@@ -18,7 +18,8 @@ export class Lunges {
   constructor() {
     this.p1 = 0;
     this.p2 = 0;
-    this.count = 0;
+    this.right_count = 0;
+    this.wrong_count = 0;
     this.again = true;
     this.straight_back = true;
     this.knee_front_toe = false;
@@ -33,7 +34,7 @@ export class Lunges {
     right_knee_angle,
     left_knee_angle,
     knee_front_toe,
-    final_condn
+    final_condn,
   ) {
     if (c1) {
       // user is doing lunging
@@ -59,14 +60,17 @@ export class Lunges {
           if (!this.knee_front_toe) {
             if (this.straight_back) {
               if (this.final_condn) {
-                this.count += 1;
+                this.right_count += 1;
               } else {
+                this.wrong_count += 1;
                 Final.play(); //when back is not staight when you comes back to initial position
               }
             } else {
+              this.wrong_count += 1;
               Back.play(); //when back is not straight
             }
           } else {
+            this.wrong_count += 1;
             Toe.play(); //when knee is in front of toe of front foot
           }
         } else {
@@ -80,14 +84,20 @@ export class Lunges {
       this.enough_knee_bending = false;
       this.final_condn = false;
     }
-    if ((this.count === 5 || this.count === 15) && this.p1 !== this.count) {
+    if (
+      (this.right_count === 5 || this.right_count === 15) &&
+      this.p1 !== this.right_count
+    ) {
       great_audio.play();
-      this.p1 = this.count;
+      this.p1 = this.right_count;
     }
-    if (this.count === 10 && this.p2 !== this.count) {
+    if (this.right_count === 10 && this.p2 !== this.right_count) {
       last_few_audio.play();
-      this.p2 = this.count;
+      this.p2 = this.right_count;
     }
-    return this.count;
+    return {
+      right_count: this.right_count,
+      wrong_count: this.wrong_count,
+    };
   }
 }
