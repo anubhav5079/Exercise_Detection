@@ -34,8 +34,7 @@ const Left = () => {
           navigate("/selectExcercise");
         }}
       >
-        {" "}
-        Go back{" "}
+        <div>Go back</div>
       </h2>
       <div className={styles.main}>
         <div className={styles.first}>

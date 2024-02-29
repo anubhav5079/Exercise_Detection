@@ -19,6 +19,14 @@
   /* height: 60px; */
   position: sticky;
   top: 0;
-  padding: 25px 25px;
   background-color: #1f2232;
+  text-align: center;
+}
+
+.top > div {
+  cursor: pointer;
+  padding: 1rem;
+}
+.top > div:hover {
+  background: rgba(0, 0, 0, 0.5);
 }

@@ -5,13 +5,13 @@ import { Context } from "../App";
 import data from "../Assets/Json/Text";
 
 const Right = () => {
-  const { setOpen, speed, exercise, wrong_count, right_count } =
+  const { open, setOpen, speed, exercise, wrong_count, right_count } =
     useContext(Context);
 
   return (
     <div className="right">
       <div className="second-icon">
-        <img src={About} onClick={() => setOpen(true)} alt="About" id="b7" />
+        <img src={About} onClick={() => setOpen(!open)} alt="About" id="b7" />
       </div>
       <div className="circle">
         <span>Count</span>
