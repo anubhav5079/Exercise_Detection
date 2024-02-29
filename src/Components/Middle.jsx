@@ -17,7 +17,7 @@ const Middle = () => {
   const [allowed, setAllowed] = useState(0);
   const {
     setRightCount,
-    setLeftCount,
+    setWrongCount,
     setSpeed,
     start,
     completed,
@@ -78,8 +78,8 @@ const Middle = () => {
           unsubscribe = requestAnimationFrame(renderPrediction);
         }
         camera = await Camera.setupCamera(
-          setLeftCount,
           setRightCount,
+          setWrongCount,
           setSpeed,
           (audio) => (playing.current = audio),
           playing.current,
@@ -112,7 +112,7 @@ const Middle = () => {
     setCompleted,
     setSpeed,
     setRightCount,
-    setLeftCount,
+    setWrongCount,
   ]);
 
   return (
