@@ -87,6 +87,14 @@ function SelectExcercise() {
         </div>
       </div>
       <WorkoutList />
+      <center>
+        <a
+          style={{ color: "white" }}
+          href="https://master--yogadetection.netlify.app/"
+        >
+          In Beta - Yoga Detection
+        </a>
+      </center>
     </div>
   );
 }

@@ -407,17 +407,6 @@ export class Camera {
       case exercises.Leg_Raises:
         this.heels_valid(this.validateLegRaises, 6);
         break;
-      // case exercises.Active_Hip_Abduction:
-      //   this.heels_valid(this.validateActiveHipAbduction, 6);
-      //   break;
-
-      // case exercises.Lateral_Shoulder_Stretch:
-      //   this.heels_valid(this.validateLatsStretch, 7);
-      //   break;
-
-      // case exercises.Lunging_Hip_Flexor_Stretch:
-      //   this.heels_valid(this.validateLungingStretch, 8);
-      //   break;
 
       default:
         break;

@@ -30,7 +30,8 @@ const Right = () => {
         <span>Accuracy</span>
         <h1>
           {right_count !== 0 && wrong_count !== 0
-            ? (right_count / (wrong_count + right_count)) * 100 + "%"
+            ? ((right_count / (wrong_count + right_count)) * 100).toFixed(2) +
+              "%"
             : "NA"}
         </h1>
       </div>

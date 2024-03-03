@@ -3,6 +3,9 @@ import "../Styles/SignUp.css";
 import { useNavigate } from "react-router-dom";
 import styles from "./SignUp.module.css";
 import { Context } from "../App";
+import { isEmpty } from "validator";
+import { isString } from "@tensorflow/tfjs-core/dist/util_base";
+import isEmail from "validator/lib/isEmail";
 
 function SignUp(props) {
   const {
@@ -12,7 +15,7 @@ function SignUp(props) {
     setAge,
     gender,
     setGender,
-    // email,
+    email,
     setEmail,
     // number,
     setNumber,
@@ -20,11 +23,27 @@ function SignUp(props) {
 
   const [err, setErr] = useState("");
   const submit = () => {
-    if (name === "" || age === 0 || gender === "") {
-      setErr("name / age / gender");
-      return;
-    } else {
+    let e = [];
+    if (isEmpty(name) || !isString(name)) {
+      e.push("name");
+    }
+
+    if (isNaN(age) || age < 12) {
+      e.push("age");
+    }
+
+    if (isEmpty(gender) || !isString(email)) {
+      e.push("gender");
+    }
+
+    if (isEmpty(email) || !isEmail(email)) {
+      e.push("email");
+    }
+
+    if (e.length === 0) {
       navigate("/selectExcercise");
+    } else {
+      setErr(e.join(","));
     }
   };
   const navigate = useNavigate();
@@ -38,7 +57,7 @@ function SignUp(props) {
           submit();
         }}
       >
-        {err !== "" ? <div className={styles.err}>Missing {err}</div> : null}
+        {err !== "" ? <div className={styles.err}>Invalid {err}</div> : null}
         <input
           className={styles.input}
           type="text"
